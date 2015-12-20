@@ -7,12 +7,14 @@ namespace Interview
 {
     public class CarRepository : Repository<Car>
     {
-        public IDataStore<Car> carDataStore;
+        public IDataStoreStrategy<Car> carDataStore;
 
-        public  CarRepository(IDataStore<Car> carDataStore) : base (carDataStore)
+        public  CarRepository(IDataStoreStrategy<Car> carDataStore) : base (carDataStore)
         {
             this.carDataStore = carDataStore;
         }
+
+
     }
 
    

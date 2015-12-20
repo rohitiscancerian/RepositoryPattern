@@ -5,9 +5,7 @@ using System.Text;
 
 namespace Interview
 {
-    public interface IDataStore<T> : IRepository<T> where T : IStoreable
+    public interface IDataStoreContext : IDisposable
     {
     }
-   
 }
-    

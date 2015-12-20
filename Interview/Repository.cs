@@ -9,14 +9,14 @@ namespace Interview
 
     public class Repository<T> : IRepository<T> where T : IStoreable
     {
-        protected IDataStore<T> dataStore;
+        protected IDataStoreStrategy<T> dataStore;
 
-        public Repository(IDataStore<T> dataStore)
+        public Repository(IDataStoreStrategy<T> dataStore)
         {
             this.dataStore = dataStore;
         }
 
-        public IEnumerable<T> All()
+        public virtual IEnumerable<T> All()
         {
             return this.dataStore.All();
         }

@@ -16,7 +16,7 @@ namespace Interview
             // Arrange
             var cars = GetDummyCar(2);
             var carDbSet = GetCarsDbSet(cars);
-            var carsContextMock = new Mock<CarDataStore>();
+            var carsContextMock = new Mock<CarSqlDataStoreStrategy>();
             carsContextMock.Setup(pc => pc.All()).Returns(carDbSet);
             var entityRepository = new CarRepository(carsContextMock.Object);
 
