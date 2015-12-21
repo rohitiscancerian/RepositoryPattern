@@ -21,17 +21,17 @@ namespace Interview
             return this.dataStore.All();
         }
 
-        public void Delete(IComparable id)
+        public virtual void Delete(IComparable id)
         {
             this.dataStore.Delete(id);
         }
 
-        public T FindById(IComparable id)
+        public virtual T FindById(IComparable id)
         {
             return this.dataStore.FindById(id);
         }
 
-        public void Save(T item)
+        public virtual void Save(T item)
         {
             this.dataStore.Save(item);
         }

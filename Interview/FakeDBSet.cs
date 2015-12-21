@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace Interview
 {
-    public class FakeDbSet<TEntity> : IDbSet<TEntity> where TEntity : class
+    public class FakeDbSet<TEntity> : DbSet<TEntity> where TEntity : class
     {
 
         ObservableCollection<TEntity> _collection;
@@ -21,7 +21,7 @@ namespace Interview
             _query = _collection.AsQueryable();
         }
 
-        public TEntity Add(TEntity entity)
+        public override TEntity Add(TEntity entity)
         {
 
             _collection.Add(entity);
@@ -29,69 +29,69 @@ namespace Interview
         }
 
 
-        public TEntity Attach(TEntity entity)
-        {
+        //public TEntity Attach(TEntity entity)
+        //{
 
-            _collection.Add(entity);
-            return entity;
-        }
+        //    _collection.Add(entity);
+        //    return entity;
+        //}
 
-        public TDerivedEntity Create<TDerivedEntity>() where TDerivedEntity : class, TEntity
-        {
+        //public TDerivedEntity Create<TDerivedEntity>() where TDerivedEntity : class, TEntity
+        //{
 
-            return Activator.CreateInstance<TDerivedEntity>();
-        }
+        //    return Activator.CreateInstance<TDerivedEntity>();
+        //}
 
-        public TEntity Create()
-        {
+        //public TEntity Create()
+        //{
 
-            return Activator.CreateInstance<TEntity>();
-        }
+        //    return Activator.CreateInstance<TEntity>();
+        //}
 
-        public TEntity Find(params object[] keyValues)
-        {
+        //public TEntity Find(params object[] keyValues)
+        //{
 
-            throw new NotImplementedException();
-        }
+        //    throw new NotImplementedException();
+        //}
 
-        public ObservableCollection<TEntity> Local
-        {
+        //public ObservableCollection<TEntity> Local
+        //{
 
-            get { return _collection; }
-        }
+        //    get { return _collection; }
+        //}
 
-        public TEntity Remove(TEntity entity)
-        {
+        //public TEntity Remove(TEntity entity)
+        //{
 
-            _collection.Remove(entity);
-            return entity;
-        }
+        //    _collection.Remove(entity);
+        //    return entity;
+        //}
 
-        public IEnumerator<TEntity> GetEnumerator()
-        {
+        //public IEnumerator<TEntity> GetEnumerator()
+        //{
 
-            return _collection.GetEnumerator();
-        }
+        //    return _collection.GetEnumerator();
+        //}
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
 
-            return _collection.GetEnumerator();
-        }
+        //    return _collection.GetEnumerator();
+        //}
 
-        public Type ElementType
-        {
-            get { return _query.ElementType; }
-        }
+        //public Type ElementType
+        //{
+        //    get { return _query.ElementType; }
+        //}
 
-        public Expression Expression
-        {
-            get { return _query.Expression; }
-        }
+        //public Expression Expression
+        //{
+        //    get { return _query.Expression; }
+        //}
 
-        public IQueryProvider Provider
-        {
-            get { return _query.Provider; }
-        }
+        //public IQueryProvider Provider
+        //{
+        //    get { return _query.Provider; }
+        //}
     }
 }

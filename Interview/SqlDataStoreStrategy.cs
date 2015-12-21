@@ -11,7 +11,7 @@ namespace Interview
     {
         protected readonly SqlDataStoreContext dataContext;
 
-        protected readonly IDbSet<T> dbSet;
+        public readonly DbSet<T> dbSet;
 
         public SqlDataStoreStrategy(IDataStoreContext dataContext)
         {
@@ -30,25 +30,18 @@ namespace Interview
             return this.dbSet.ToList();
         }
 
-        public void Delete(IComparable id)
+        public virtual void Delete(IComparable id)
         {
             var entity = this.dbSet.Find(id);
             this.dbSet.Remove(entity);
         }
 
-        public T FindById(IComparable id)
+        public virtual T FindById(IComparable id)
         {
             return this.dbSet.Find(id);
         }
 
-        public IEnumerable<T> GetAll()
-        {
-            // This might be a costly operation and should be avoided.
-            // This can have a lot of objects getting created
-            return this.dbSet.ToList();
-        }
-
-        public void Save(T item)
+        public virtual void Save(T item)
         {
             this.dbSet.Add(item);
         }

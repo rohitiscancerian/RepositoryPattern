@@ -7,15 +7,25 @@ namespace Interview
 {
     public class CarRepository : Repository<Car>
     {
-        public IDataStoreStrategy<Car> carDataStore;
+        public CarSqlDataStoreStrategy carDataStore;
 
-        public  CarRepository(IDataStoreStrategy<Car> carDataStore) : base (carDataStore)
+        public CarRepository(CarSqlDataStoreStrategy carDataStore) : base(carDataStore)
         {
             this.carDataStore = carDataStore;
         }
 
-
+        public override void Save(Car item)
+        {
+            if (item.Id != null)
+            { 
+                base.Save(item);
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
+        }
     }
 
-   
+
 }
